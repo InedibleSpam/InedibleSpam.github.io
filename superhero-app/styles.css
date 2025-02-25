@@ -56,21 +56,21 @@ header{
 }
 
 #text{
-    width: 100%; 
-    padding: 12px 20px;
+    width: 70%; 
+    max-width: 400px;
+    padding: 12px 15px;
     border: 2px solid #999;
     border-radius: 4px;
     font-size: 20px;
     background-color: #ececec;
 }
 #submit{
-    position: absolute;
-    margin-left: 10px;;
-    width: 200px;
+    margin-left: 0;
+    width: auto;
     height: 50px;
     background-color: #57a0d2;
     color: white;
-    padding: 12px 15px;
+    padding: 12px 20px;
     border: 1px solid #0476F2;
     border-radius: 4px;
     cursor: pointer;
@@ -84,11 +84,12 @@ header{
 }
 #apiForm{
     display: flex;
-    align-items: center;
+    justify-content: center;  
+    align-items: center;  
+    gap: 10px;  
+    width: 100%;
     max-width: 600px;
-    width: 40%;
-    gap: 10px;
-    margin-bottom: 20px;
+    flex-wrap: wrap;
     
 }
 #superhero{
@@ -105,8 +106,9 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: 100vh;
     padding: 20px;
     background-color: #0476F2;
+    overflow: hidden;
 }
