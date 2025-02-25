@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="covidStyle.css">
+    <title>Document</title>
+    
+</head>
+<header><h1 id="head">Visualizing COVID Health Data by Country</h1></header>
+<body>
+    <form id="searchForm">
+        <input type="text" id="text" placeholder="Enter Country">
+        <input type="submit" id="submit" value="Submit">
+    </form>
+    <p id="display"></p>
+    <div class="chart-container">
+    <canvas id="covidChart"></canvas>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="covidApp.js"></script>
+</body>
+</html>
