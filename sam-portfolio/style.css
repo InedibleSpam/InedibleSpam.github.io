@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+header {
+    background-color: #4A4E69;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a{
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+#about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    padding: 40px;
+    margin: 20px auto;
+    max-width: 1000px;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+
+#about img {
+    width: 150px;  
+    height: auto;
+    border-radius: 12px;
+    border: 3px solid #4A4E69;
+}
+
+#about-text {
+    max-width: 600px;
+}
+
+#about-text h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+#about-text p {
+    line-height: 1.8;
+}
+
+#projects {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.project-card {
+    width: 90%;
+    max-width: 800px;
+    margin: 10px auto;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #e9ecef;
+    text-align: center;
+}
+
+.project-card p{
+    text-align: left;
+}
+
+.project-card img {
+    width: 100%;  
+    max-width: 300px; 
+    border-radius: 8px; 
+    margin-bottom: 10px; 
+}
+
+.project-card h3 a {
+    color: #333;
+    text-decoration: none;
+}
+
+.project-card h3 a:hover{
+    color: #A9A9A9;
+}
+
+#contact {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, textarea, button {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+}
+
+button {
+    background-color: #4A4E69;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background-color: #6A7594;
+}
+
+footer {
+    text-align: center;
+    background-color: #4A4E69;
+    color: #fff;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 12px;
+}
+
+h2, h1{
+    text-align: center;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    #about {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    #about img {
+        margin-bottom: 15px;
+    }
+
+    #about-text {
+        padding: 0 10px;
+    }
+}

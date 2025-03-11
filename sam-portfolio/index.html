@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about" class="container">
+        <div class="about-container">
+            <img src="Profile Pic.JPG">
+            <div id="about-text">
+                <h1>Samuel Figard</h1>
+                <p>My name is Samuel Figard and I am currently pursuing my Bachelor's degree in Computer Science at
+                    Houghton University. I graduated with an Associate's Degree in Computer Science from Lehigh Carbon
+                    Community College in 2024. I have taken many different courses related to Computer Science, and have
+                    worked with languages such as C++, Python, Java, HTML, CSS, and JavaScript. I enjoy working with the
+                    physical application of Computer Science, like building computers, soldering, and general hands-on
+                    projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2>Projects</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <h3><a href="https://inediblespam.github.io/superhero-app/">Superhero App</a></h3>
+                <img src="SuperheroApp.png">
+                <p>This is the first full website that I developed this semester. It utilizes the SuperheroAPI database.
+                    The
+                    app takes in an input, and outputs the Superhero's name, picture, and biography.</p>
+            </div>
+            <div class="project-card">
+                <h3><a href="https://inediblespam.github.io/covid-app/">Covid App</a></h3>
+                <img src="CovidApp.png">
+                <p>This is another website that I developed this semester. This app utilizes a COVID-19 disease
+                    database. It
+                    takes an input of a country, and outputs a graph with the country's COVID vaccine rate.</p>
+            </div>
+            <div class="project-card">
+                <h3><a href="https://github.com/InedibleSpam/Fruit-Identifier">Fruit Identifier</a></h3>
+                <img src="FruitIdentifier.png">
+                <p>This is a model that me and my group developed in my machine learning course. It uses a Convolutional
+                    Neural Network to classify images of fruits from the Fruit-262 dataset. The model takes an image of
+                    a
+                    fruit as input and predicts its category with a certain accuracy.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form id="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Contact: <a href="#">sffigard@gmail.com</a></p>
+        <p><a href="https://www.linkedin.com/in/sam-figard-64570a2b0/">LinkedIn</a> | <a
+                href="https://github.com/InedibleSpam">GitHub</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
