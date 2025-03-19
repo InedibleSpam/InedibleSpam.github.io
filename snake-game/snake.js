@@ -23,10 +23,17 @@ document.getElementById("highScore").innerText = "High Score: " + highScore;
 var gameInterval;
 
 function playRandomAudio() {
+    const chance = Math.floor(Math.random()*20)+1;
+    if(chance === 1) {
+        const specialSound = new Audio("areYouSure.mp3")
+        specialSound.play();
+    }else{
     const randomSound = Math.floor(Math.random()*eatingAudio.length);
     const eating = new Audio(eatingAudio[randomSound]);
     eating.play();
+    }
 }
+
 
 window.onload = function () {
     board = document.getElementById("board");
