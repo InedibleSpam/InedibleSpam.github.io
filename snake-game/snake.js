@@ -176,4 +176,52 @@ function endGame() {
         document.getElementById("highScore").innerText = "High Score: " + highScore;
     }
     alert("Game Over! Final Score: " + score);
+
+    function resizeCanvas() {
+    const board = document.getElementById("board");
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth < 480) {
+        board.width = 300;
+        board.height = 300;
+    } else if (screenWidth < 768) {
+        board.width = 400;
+        board.height = 400;
+    } else {
+        board.width = 500;
+        board.height = 500;
+    }
 }
+
+window.addEventListener("resize", resizeCanvas);
+window.onload = resizeCanvas;
+    
+document.getElementById("upBtn").addEventListener("click", function () {
+    if (velocityY === 0) {
+        velocityX = 0;
+        velocityY = -1;
+    }
+});
+
+document.getElementById("downBtn").addEventListener("click", function () {
+    if (velocityY === 0) {
+        velocityX = 0;
+        velocityY = 1;
+    }
+});
+
+document.getElementById("leftBtn").addEventListener("click", function () {
+    if (velocityX === 0) {
+        velocityX = -1;
+        velocityY = 0;
+    }
+});
+
+document.getElementById("rightBtn").addEventListener("click", function () {
+    if (velocityX === 0) {
+        velocityX = 1;
+        velocityY = 0;
+    }
+});
+}
+
