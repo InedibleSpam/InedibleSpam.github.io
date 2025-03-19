@@ -193,35 +193,5 @@ function endGame() {
     }
 }
 
-window.addEventListener("resize", resizeCanvas);
-window.onload = resizeCanvas;
-    
-document.getElementById("upBtn").addEventListener("click", function () {
-    if (velocityY === 0) {
-        velocityX = 0;
-        velocityY = -1;
-    }
-});
-
-document.getElementById("downBtn").addEventListener("click", function () {
-    if (velocityY === 0) {
-        velocityX = 0;
-        velocityY = 1;
-    }
-});
-
-document.getElementById("leftBtn").addEventListener("click", function () {
-    if (velocityX === 0) {
-        velocityX = -1;
-        velocityY = 0;
-    }
-});
-
-document.getElementById("rightBtn").addEventListener("click", function () {
-    if (velocityX === 0) {
-        velocityX = 1;
-        velocityY = 0;
-    }
-});
 }
 
