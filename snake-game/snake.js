@@ -27,6 +27,20 @@ function playRandomAudio() {
     if(chance === 1) {
         const specialSound = new Audio("areYouSure.mp3")
         specialSound.play();
+
+        document.body.style.backgroundImage = 'url("omni-man.jpg")';
+        document.body.style.backgroundRepeat = 'no-repeat'; 
+        document.body.style.backgroundSize = 'contain';
+        document.body.style.maxHeight = '100%';
+        document.body.style.maxWidth = '100%';
+        document.body.style.backgroundPosition = 'left';
+
+        specialSound.onended = () => {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundRepeat = '';
+            document.body.style.backgroundSize = ''; 
+        }
+        
     }else{
     const randomSound = Math.floor(Math.random()*eatingAudio.length);
     const eating = new Audio(eatingAudio[randomSound]);
