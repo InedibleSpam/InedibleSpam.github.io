@@ -51,7 +51,7 @@ function startGame() {
     document.getElementById("highScore").innerText = "High Score: " + highScore;
     placeFood();
     clearInterval(gameInterval);
-    var speed = Math.max(100-score*5, 50);
+    var speed = Math.max(100-score*2, 50);
     gameInterval = setInterval(update, speed);
     gameOverSound.currentTime=0;
     gameOverSound.pause();
