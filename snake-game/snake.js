@@ -8,7 +8,8 @@ var gameOverSound = new Audio("gameOver.mp3");
 var snakeColor = "#00FF00";
 var eatSlowSound = new Audio("eatSlow.mp3");
 var eatFastSound = new Audio("eatFast.mp3");
-const eatingAudio = ['eat.mp3','eatSlow.mp3','eatFast.mp3'];
+const eatingAudio = ['eat.mp3', 'eatSlow.mp3', 'eatFast.mp3'];
+const specialSound2 = new Audio("snakeSound.mp3");
 
 var snakeX = blockSize * 5;
 var snakeY = blockSize * 5;
@@ -23,13 +24,13 @@ document.getElementById("highScore").innerText = "High Score: " + highScore;
 var gameInterval;
 
 function playRandomAudio() {
-    const chance = Math.floor(Math.random()*20)+1;
-    if(chance === 1) {
+    const chance = Math.floor(Math.random() * 20) + 1;
+    if (chance === 1) {
         const specialSound = new Audio("areYouSure.mp3")
         specialSound.play();
 
         document.body.style.backgroundImage = 'url("omni-man.jpg")';
-        document.body.style.backgroundRepeat = 'no-repeat'; 
+        document.body.style.backgroundRepeat = 'no-repeat';
         document.body.style.backgroundSize = 'contain';
         document.body.style.maxHeight = '100%';
         document.body.style.maxWidth = '100%';
@@ -38,13 +39,13 @@ function playRandomAudio() {
         specialSound.onended = () => {
             document.body.style.backgroundImage = '';
             document.body.style.backgroundRepeat = '';
-            document.body.style.backgroundSize = ''; 
+            document.body.style.backgroundSize = '';
         }
-        
-    }else{
-    const randomSound = Math.floor(Math.random()*eatingAudio.length);
-    const eating = new Audio(eatingAudio[randomSound]);
-    eating.play();
+
+    } else {
+        const randomSound = Math.floor(Math.random() * eatingAudio.length);
+        const eating = new Audio(eatingAudio[randomSound]);
+        eating.play();
     }
 }
 
@@ -54,7 +55,7 @@ window.onload = function () {
     board.height = rows * blockSize;
     board.width = cols * blockSize;
     context = board.getContext("2d");
-    
+
     placeFood();
     document.addEventListener("keydown", changeDirection);
     document.getElementById("startBtn").addEventListener("click", startGame);
@@ -72,11 +73,16 @@ function startGame() {
     document.getElementById("highScore").innerText = "High Score: " + highScore;
     placeFood();
     clearInterval(gameInterval);
-    var speed = Math.max(100-score*2, 50);
+    var speed = Math.max(100 - score * 2, 50);
     gameInterval = setInterval(update, speed);
-    gameOverSound.currentTime=0;
+    gameOverSound.currentTime = 0;
     gameOverSound.pause();
-    
+    specialSound2.pause();
+    specialSound2.currentTime = 0;
+    document.body.style.backgroundImage = '';
+    document.body.style.backgroundRepeat = '';
+    document.body.style.backgroundSize = '';
+
 }
 
 function update() {
@@ -89,7 +95,7 @@ function update() {
     context.arc(foodX + blockSize / 2, foodY + blockSize / 2, blockSize / 2, 0, 2 * Math.PI);
     context.fill();
 
-    context.strokeStyle = "#333"; 
+    context.strokeStyle = "#333";
     context.lineWidth = 1;
 
     for (let i = 0; i < cols; i++) {
@@ -122,13 +128,13 @@ function update() {
 
     snakeX += velocityX * blockSize;
     snakeY += velocityY * blockSize;
-    
+
     context.fillStyle = "lime";
     for (let i = 0; i < snakeBody.length; i++) {
         context.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
     }
     context.fillRect(snakeX, snakeY, blockSize, blockSize);
-    
+
     if (snakeX < 0 || snakeX >= cols * blockSize || snakeY < 0 || snakeY >= rows * blockSize) {
         endGame();
     }
@@ -167,8 +173,29 @@ function placeFood() {
 function endGame() {
     gameOver = true;
     clearInterval(gameInterval);
-    gameOverSound.play();
-    
+
+    const chance2 = Math.floor(Math.random() * 5) + 1;
+    if (chance2 === 1) {
+        specialSound2.play();
+
+        document.body.style.backgroundImage = 'url("snake.jpg")';
+        document.body.style.backgroundRepeat = 'no-repeat';
+        document.body.style.backgroundSize = 'contain';
+        document.body.style.maxHeight = '100%';
+        document.body.style.maxWidth = '100%';
+        document.body.style.backgroundPosition = 'left';
+
+        specialSound2.onended = () => {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundRepeat = '';
+            document.body.style.backgroundSize = '';
+        }
+    } else {
+        gameOverSound.play();
+    }
+
+
+
 
     if (score > highScore) {
         highScore = score;
@@ -178,20 +205,20 @@ function endGame() {
     alert("Game Over! Final Score: " + score);
 
     function resizeCanvas() {
-    const board = document.getElementById("board");
-    const screenWidth = window.innerWidth;
+        const board = document.getElementById("board");
+        const screenWidth = window.innerWidth;
 
-    if (screenWidth < 480) {
-        board.width = 300;
-        board.height = 300;
-    } else if (screenWidth < 768) {
-        board.width = 400;
-        board.height = 400;
-    } else {
-        board.width = 500;
-        board.height = 500;
+        if (screenWidth < 480) {
+            board.width = 300;
+            board.height = 300;
+        } else if (screenWidth < 768) {
+            board.width = 400;
+            board.height = 400;
+        } else {
+            board.width = 500;
+            board.height = 500;
+        }
     }
-}
 
 }
 
