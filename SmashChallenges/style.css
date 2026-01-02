@@ -1,26 +1,161 @@
-nav{
-    background-color: #333;
-    overflow: hidden;
+body{
+    background-color: #F2F4F3;
 }
-nav a{
-    float: left;
+nav {
+    overflow: hidden;
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase; 
+    letter-spacing: 1.5px;
     color: white;
+    padding: 15px 0;
     text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1B3664;
+}
+
+nav li{
+    float: left;
+    border: 1px solid black;
+}
+
+nav li a {
+    display: block;
+    color: white;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    float: left;
 }
+
+nav a {
+    float: left;
+    transition: color 0.3s ease-in-out;
+    color: white;
+    padding: none;
+    text-decoration: none;
+    /* outline: 1px solid black; */
+}
+
+nav ul li a:hover {
+    color: #ffcc00;;
+}
+
 nav ul {
     list-style: none;
     display: flex;
+    justify-content: left;
+}
+
+.buttons a {
+    text-decoration: none;
+    color: black;
+}
+
+.leaderboard-preview a {
+    text-decoration: none;
+    color: black;
+}
+
+.smash-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    color: black;
+    text-shadow: 4px 4px 0px lightgrey;
+}
+.smash-text2{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    color: black;
+}
+h1{
+    display: flex;
     justify-content: center;
+    align-items: center;
+}
+.intro-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 400; 
+    line-height: 1.6; 
+    text-align: center; 
+    color: #81726A;
+    max-width: 600px; 
+    margin: 0 auto; 
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
     gap: 20px;
 }
-.buttons a{
+.buttons button{
+    padding: 10px 28px;
+    background-color: #1E96FC;
+    text-align: center;
     text-decoration: none;
-    color: black;
+    display: inline-block;
+    font-size: 16px;
+    border: none;
+}
+.buttons a{
+    color: white;
+    outline: none;
+}
+.challenges-preview{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.leaderboard-preview{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.leaderboard-preview button{
+    padding: 10px 28px;
+    background-color: #1E96FC;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border: none;
 }
 .leaderboard-preview a{
-    text-decoration: none;
-    color: black;
+    color: white;
 }
+.description{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.footer-nav{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+.how-it-works {
+    font-family: 'Poppins', sans-serif; 
+    font-size: 18px;
+    font-weight: 400; 
+    line-height: 1.6; 
+    color: #81726A;
+    max-width: 600px;
+    margin: 0 auto;
+}
+

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Snowball Splat: Speed Round</title>
+    <style>
+        body { background: #e0f7fa; font-family: 'Arial', sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        #game-container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; border: 4px solid #81d4fa; width: 600px; }
+        
+        /* Timer Bar Styles */
+        #timer-container { width: 100%; height: 10px; background: #eee; border-radius: 5px; margin-bottom: 20px; overflow: hidden; }
+        #timer-bar { width: 100%; height: 100%; background: #0288d1; transition: width 0.1s linear; }
+
+        .staff { position: relative; width: 500px; height: 160px; margin: 40px auto; border-top: 2px solid #333; border-bottom: 2px solid #333; }
+        .line { position: absolute; width: 100%; height: 2px; background: #333; left: 0; }
+        .line1 { top: 120px; } .line2 { top: 80px; } .line3 { top: 40px; } 
+        .clef { position: absolute; left: -10px; top: -30px; font-size: 140px; color: #333; }
+        
+        #snowball {
+            position: absolute; width: 35px; height: 35px; background: white;
+            border-radius: 50%; border: 2px solid #b3e5fc; box-shadow: inset -5px -5px 10px #e1f5fe;
+            left: 250px; transition: top 0.2s, transform 0.1s; z-index: 10;
+        }
+        
+        .splat { transform: scale(3) !important; opacity: 0; transition: 0.3s; }
+        .melted { transform: scaleY(0.1) translateY(100px) !important; opacity: 0; transition: 0.5s; }
+        
+        input { padding: 10px; font-size: 1.2rem; width: 60px; text-align: center; text-transform: uppercase; border: 2px solid #81d4fa; border-radius: 5px; outline: none; }
+        #score { font-size: 1.5rem; color: #01579b; margin: 10px 0; }
+        #message { height: 20px; font-weight: bold; color: #d32f2f; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div id="game-container">
+    <h1>❄️ Snowball Splat: Speed Round! ❄️</h1>
+    <div id="timer-container"><div id="timer-bar"></div></div>
+    <div id="score">Score: 0</div>
+    
+    <div class="staff">
+        <div class="clef">𝄞</div>
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+        <div class="line line3"></div>
+        <div id="snowball"></div>
+    </div>
+
+    <div class="controls">
+        <input type="text" id="noteInput" maxlength="1" autofocus placeholder="?">
+    </div>
+    <div id="message">Type the letter before it melts!</div>
+</div>
+
+<script>
+    const notes = [
+        { name: 'E', top: 140 }, { name: 'F', top: 120 }, { name: 'G', top: 100 },
+        { name: 'A', top: 80 }, { name: 'B', top: 60 }, { name: 'C', top: 40 },
+        { name: 'D', top: 20 }, { name: 'E', top: 0 }, { name: 'F', top: -20 }
+    ];
+
+    let currentNote;
+    let score = 0;
+    let timeLeft;
+    let timerInterval;
+    const gameTime = 4000; // 4 seconds per note
+
+    const snowball = document.getElementById('snowball');
+    const input = document.getElementById('noteInput');
+    const message = document.getElementById('message');
+    const scoreDisplay = document.getElementById('score');
+    const timerBar = document.getElementById('timer-bar');
+
+    function spawnNote() {
+        clearInterval(timerInterval);
+        currentNote = notes[Math.floor(Math.random() * notes.length)];
+        snowball.style.top = currentNote.top + 'px';
+        snowball.className = ''; // Reset classes
+        input.value = '';
+        input.focus();
+        startTimer();
+    }
+
+    function startTimer() {
+        timeLeft = 100;
+        timerInterval = setInterval(() => {
+            timeLeft -= 2; // Speed of melting
+            timerBar.style.width = timeLeft + "%";
+            
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                meltSnowball();
+            }
+        }, 80); 
+    }
+
+    function meltSnowball() {
+        message.innerText = "Oh no! It melted! Score reset.";
+        score = 0;
+        scoreDisplay.innerText = `Score: ${score}`;
+        snowball.classList.add('melted');
+        setTimeout(spawnNote, 800);
+    }
+
+    function checkNote() {
+        if (input.value.toUpperCase() === currentNote.name) {
+            clearInterval(timerInterval);
+            score += 10;
+            scoreDisplay.innerText = `Score: ${score}`;
+            message.innerText = "";
+            snowball.classList.add('splat');
+            setTimeout(spawnNote, 400);
+        } else if (input.value.length > 0) {
+            snowball.style.transform = "translateX(10px)";
+            setTimeout(() => snowball.style.transform = "translateX(0)", 50);
+            input.value = '';
+        }
+    }
+
+    input.addEventListener("input", checkNote); // Checks instantly as they type
+    spawnNote();
+</script>
+
+</body>
+</html>
